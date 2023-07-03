@@ -1,0 +1,26 @@
+import Phaser from "phaser";
+const formatLife = (gameLife) => `NYAWA : ${gameLife}`
+export default class LiveLabel extends Phaser.GameObjects.Text{
+
+    constructor(scene, x, y, lifePlayer, style){
+        super(scene, x, y , formatLife(lifePlayer),style)
+        this.life = lifePlayer
+    }
+
+    setLife(lifePlayer){
+        this.life = lifePlayer
+        this.setText(formatLife(lifePlayer))
+    }
+
+    getLife(){
+        return this.life
+    }
+
+    add(points){
+        this.setLife( this.life + points)
+    }
+
+    subtratc(value){
+        this.setLife( this.life - value)
+    }
+}
